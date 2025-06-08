@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karan Mane | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #111;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: background-color 0.5s ease;
+    }
+
+    nav a {
+      color: #fff;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ff5757;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      min-height: 100vh;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      color: #fff;
+    }
+
+    .hero-text h1 span {
+      color: #ff5757;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      color: #aaa;
+    }
+
+    .btn-primary {
+      background-color: #ff5757;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #ff2f2f;
+    }
+
+    .hero-img {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 1s ease;
+    }
+
+    .hero-img.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .hero-img img {
+      width: 80%;
+      max-width: 400px;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    .sidebar-contact {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+    }
+
+    .sidebar-contact a {
+      background-color: #00ff7f;
+      padding: 0.75rem 1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 0 10px #00ff7f99;
+    }
+
+    .sidebar-contact a i {
+      margin-left: 0.5rem;
+    }
+
+    .social-icons {
+      position: fixed;
+      top: 40%;
+      left: 0;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 0.5rem;
+      z-index: 999;
+    }
+
+    .social-icons a {
+      color: white;
+      background: #222;
+      padding: 0.75rem;
+      border-radius: 0 10px 10px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      width: 40px;
+      height: 40px;
+    }
+
+    .social-icons a:hover {
+      background: #ff5757;
+    }
+
+    .social-icons a i {
+      font-size: 1.2rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #ff5757;
+    }
+
+    ul li {
+      margin: 0.5rem 0;
+      list-style: circle;
+    }
+
+    .skill-logos {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .skill-logos img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 500px;
+      margin-top: 2rem;
+    }
+
+    input, textarea {
+      padding: 0.75rem;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    button[type="submit"] {
+      background-color: #ff5757;
+      color: #fff;
+      font-weight: bold;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div><strong>Karan M</strong></div>
+    <div>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="social-icons">
+    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+  </div>
+
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>Hi, I'm <span>Karan mane</span></h1>
+      <p>Frontend Developer & UI/UX Designer based in India. Passionate about building excellent software that improves the lives of those around me.</p>
+      <button class="btn-primary">Hire Me →</button>
+    </div>
+    <div class="hero-img" id="hero-img">
+      <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Profile Image">
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <p>I am a web developer with strong knowledge of HTML, CSS, JavaScript, and modern frontend frameworks. I'm also skilled in UI/UX design and strive to build user-centric, accessible, and responsive websites.</p>
+  </section>
+
+  <section id="education">
+    <h2 class="section-title">Education</h2>
+    <ul>
+      <li>Bachelor of enginnering in Computer science - DR.DY.Patil Technical Campus,pune,savitribai phule pune university (2024 - 2027)</li>
+      <li>Higher Secondary - Maharashtra State Board of Technical Education (MSBTE)(2019 - 2021)</li>
+      <li>Secondary School - abhinav education society pune High School </li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Programming Skills</h2>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>React, Vue.js</li>
+      <li>Figma, Adobe XD</li>
+      <li>Git, GitHub</li>
+    </ul>
+    <div class="skill-logos">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <p>Here you'll find a selection of my recent work including responsive websites, UI/UX case studies, and interactive applications.</p>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <p>You can reach me via the form below or through my email and phone.</p>
+    <form action="#" method="post">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p>Email: karan0804d@gmail.com</p>
+    <p>Phone: +91-8530931694</p>
+  </section>
+
+  <div class="sidebar-contact">
+    <a href="#contact">Let's Chat <i class="fas fa-comment-dots"></i></a>
+  </div>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const heroImg = document.getElementById('hero-img');
+
+    const options = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    observer.observe(heroImg);
+  </script>
+</body>
+</html>
